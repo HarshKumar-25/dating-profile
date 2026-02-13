@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Valentine 💖</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* =====================
+   BACKGROUND
+===================== */
+.bg {
+    position: fixed;
+    inset: 0;
+    background: url("bg.png") center / cover no-repeat;
+    z-index: -2;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: -1;
+}
+
+/* =====================
+   SCROLLABLE CONTENT
+===================== */
+.wrapper {
+    height: 100vh;
+    overflow-y: auto;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* =====================
+   ENTRY
+===================== */
+.entry {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.entry h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.entry p {
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 14px 36px;
+    border-radius: 30px;
+    border: none;
+    font-size: 16px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* =====================
+   MAIN CONTENT
+===================== */
+.content {
+    display: none;
+    max-width: 600px;
+    margin: auto;
+    padding-bottom: 120px;
+    animation: fadeIn 0.8s ease;
+}
+
+.content h2 {
+    margin-top: 50px;
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+.content p {
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+/* Chips */ 
+.chips { 
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+    margin-top: 10px;
+ } 
+ .chips span { 
+    padding: 8px 16px; 
+    background: rgba(255,255,255,0.15); 
+    border-radius: 20px; 
+    font-size: 14px; 
+}
+
+/* =====================
+   VALENTINE SECTION
+===================== */
+.valentine-box {
+    margin-top: 50px;
+    display: none;
+}
+
+.choice-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+}
+
+#noBtn {
+    position: relative;
+    background: #555;
+}
+
+/* =====================
+   FINAL TEXT
+===================== */
+.final-text {
+    margin-top: 40px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffb3c6;
+    display: none;
+}
+
+/* =====================
+   PARTY POPPERS
+===================== */
+.popper {
+    position: fixed;
+    top: 50%;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.left-popper { left: 30px; }
+.right-popper { right: 30px; }
+
+.confetti {
+    position: absolute;
+    font-size: 18px;
+    animation: blast 1.2s ease-out forwards;
+}
+
+@keyframes blast {
+    from {
+        transform: translate(0,0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translate(var(--x), var(--y)) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* =====================
+   FALLING HEARTS
+===================== */
+.heart {
+    position: fixed;
+    top: -20px;
+    font-size: 22px;
+    animation: fall 5s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
+
+/* =====================
+   FADE
+===================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<div class="wrapper" id="wrapper">
+
+    <!-- ENTRY -->
+    <div class="entry" id="entry">
+        <h1>Welcome to my Valentine 💖</h1>
+        <p>I made something special for you</p>
+        <button onclick="reveal()">Tap to continue ❤️</button>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content" id="content">
+        <h2>About Me</h2>
+        <p>
+            A simple guy who believes love grows through honesty,
+            effort, and choosing each other every day.
+        </p>
+
+        <h2>Interests</h2> 
+        <div class="chips"> 
+            <span>🎵 Music</span> 
+            <span>🎬 Movies</span> 
+            <span>☕ Coffee</span> 
+            <span>🌍 Travel</span> 
+            <span>💻 Tech</span> 
+        </div> 
+        <h2>What I’m Looking For</h2> 
+        <p> 
+            Someone kind, emotionally mature, and genuine — who values effort more than perfection. 
+
+        </p>
+
+        <button onclick="showValentine()">Let’s write our story together 💖</button>
+
+        <!-- VALENTINE QUESTION -->
+        <div class="valentine-box" id="valentineBox">
+            <h2>Will you be my Valentine? 💕</h2>
+
+            <div class="choice-buttons">
+                <button onclick="yesClicked()">Yes 💖</button>
+                <button id="noBtn">No 🙈</button>
+            </div>
+        </div>
+
+        <div class="final-text" id="finalText">
+            You are now my Valentine 💖
+        </div>
+    </div>
+</div>
+
+<div class="popper left-popper"></div>
+<div class="popper right-popper"></div>
+
+<script>
+function reveal() {
+    entry.style.display = "none";
+    content.style.display = "block";
+    wrapper.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showValentine() {
+    document.getElementById("valentineBox").style.display = "block";
+}
+
+/* NO button escape */
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseenter", () => {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 120 - 60;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+/* YES CLICK */
+function yesClicked() {
+    partyPop(5000);
+    setTimeout(heartsRain, 5000);
+    setTimeout(() => {
+        document.getElementById("finalText").style.display = "block";
+    }, 10000);
+}
+
+/* PARTY POPPERS */
+function partyPop(duration) {
+    const start = Date.now();
+    const interval = setInterval(() => {
+        pop(document.querySelector(".left-popper"), 1);
+        pop(document.querySelector(".right-popper"), -1);
+        if (Date.now() - start > duration) clearInterval(interval);
+    }, 400);
+}
+
+function pop(container, dir) {
+    const emojis = ["❤️","💖","✨","⭐","💕"];
+    for (let i = 0; i < 40; i++) {
+        const c = document.createElement("div");
+        c.className = "confetti";
+        c.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        c.style.setProperty("--x", `${dir * (Math.random()*300+80)}px`);
+        c.style.setProperty("--y", `${(Math.random()-0.5)*300}px`);
+        container.appendChild(c);
+        setTimeout(() => c.remove(), 1200);
+    }
+}
+
+/* HEART RAIN */
+function heartsRain() {
+    const rain = setInterval(() => {
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.textContent = "❤️";
+        h.style.left = Math.random() * 100 + "vw";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 5000);
+    }, 200);
+
+    setTimeout(() => clearInterval(rain), 5000);
+}
+</script>
+
+</body>
+</html>

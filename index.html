@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dating Profile 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Navigation Arrows -->
+<button class="arrow left" id="leftBtn" aria-label="Previous card">❮</button>
+<button class="arrow right" id="rightBtn" aria-label="Next card">❯</button>
+
+<!-- Carousel -->
+<div class="carousel-container">
+
+    <!-- CARD 1 -->
+    <div class="card" data-index="0">
+        <img 
+  src="profile.jpeg" 
+  alt="Profile picture of Harsh" 
+  class="profile-img"
+/>
+        <h2>Harsh Warkade</h2>
+        <p>Android Dev | Dreamer ✨</p>
+        <a 
+  href="https://www.instagram.com/hx.rs.h._07/" 
+  target="_blank" 
+  class="insta-link"
+  aria-label="Open Instagram profile"
+>
+    <span class="insta-svg">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7Zm5.25-.9a1.15 1.15 0 1 1 0 2.3a1.15 1.15 0 0 1 0-2.3Z"/>
+        </svg>
+    </span>
+    <span class="insta-text">@hx.rs.h._07</span>
+</a>
+
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card" data-index="1">
+        <h2>Interests 💡</h2>
+        <ul>
+            <li>📱 App Development</li>
+            <li>🎧 Music</li>
+            <li>🎬 Movies</li>
+            <li>🌙 Night walks</li>
+        </ul>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card" data-index="2">
+        <h2>Personality 🧠</h2>
+        <p>Introvert until comfy</p>
+        <p>Listener &gt; Talker</p>
+        <p>Calm but ambitious</p>
+        <p>Effort &gt; Luck</p>
+    </div>
+
+    <!-- CARD 4 (FINAL) -->
+   <div class="card last-card" data-index="3" id="lastCard">
+    <h2>One More Thing ❤️</h2>
+    <p>Want to see my Valentine side?</p>
+    <button class="enter-btn" onclick="openValentine()">
+        Enter My World 💃🕺
+    </button>
+</div>
+
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
