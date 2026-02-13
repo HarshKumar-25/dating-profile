@@ -8,4 +8,4 @@ An interactive Valentine-themed profile website built with HTML, CSS, and JavaSc
 - Valentine interaction
 - Confetti & heart animations
 
-Live Demo: https://USERNAME.github.io/dating-profile/
+Live Demo: https://harshkumar-25.github.io/dating-profile/
